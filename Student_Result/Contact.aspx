@@ -1,17 +1,33 @@
 ﻿<%@ Page Title="Contact" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Contact.aspx.cs" Inherits="Student_Result.Contact" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h2><%: Title %>.</h2>
-    <h3>Your contact page.</h3>
-    <address>
-        One Microsoft Way<br />
-        Redmond, WA 98052-6399<br />
+    <div class="contactdiv">
+    <strong>XYZ  College</strong>
+        <address>
+       New Baneswor, Opposite of BICC<br />
+        Kathmandu<br />
         <abbr title="Phone">P:</abbr>
-        425.555.0100
+        014-9631472
     </address>
 
     <address>
-        <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-        <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+        <strong>Admin:</strong>   <a href="mailto:admin@xyz.com" style="text-decoration:none;color:black;">admin@xyz.com</a><br />
     </address>
+        </div>
+</asp:Content>
+<asp:Content ID="Content1" runat="server" ContentPlaceHolderID="head">
+    <style type="text/css">
+        .contactdiv{
+            background:#2deadc;
+            font-size:25px;
+            font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+            width:23%;
+            margin:0px auto;
+            border:double;
+            border-width:2px;
+            border-color:brown;
+            padding:20px;
+
+        }
+    </style>
 </asp:Content>
