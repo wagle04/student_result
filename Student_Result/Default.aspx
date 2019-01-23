@@ -19,7 +19,7 @@
             <tr>
                 <td>Password: </td>
                 <td>
-                    <asp:TextBox TextMode="Password" ID="password" runat="server" ></asp:TextBox>
+                    <asp:TextBox TextMode="Password" ID="password" runat="server"></asp:TextBox>
             </tr>
             <tr>
                 <th>
@@ -28,13 +28,14 @@
                     <asp:Button runat="server" name="btnLogin" Text="Login" Style="align-content: center; font-size: 20px; background: black; color: white;" OnClick="btnLogin_Click" /></th>
 
             </tr>
-            
+
 
             <tr>
-                <td colspan="2" style="background:green;font-size:20px;text-align:center;">Not a student? To login as teacher click below!!</td>
-           <tr>
-                <td colspan="2" > <asp:Button runat="server" name="btnTeacher" Text="Login as Teacher" OnClick="btnTeacher_Click" Style="align-content: center; font-size: 20px; background: black; color: white;width:100%;"/></td>
-            </tr>
+                <td colspan="2" style="background: green; font-size: 20px; text-align: center;">Not a student? To login as teacher click below!!</td>
+                <tr>
+                    <td colspan="2">
+                        <asp:Button runat="server" name="btnTeacher" Text="Login as Teacher" OnClick="btnTeacher_Click" Style="align-content: center; font-size: 20px; background: black; color: white; width: 100%;" /></td>
+                </tr>
 
         </table>
     </div>
@@ -61,13 +62,14 @@
             font-size: 20px;
             width: 200px;
         }
-        .header{
-            width:55%;
-            background:#17daec;
+
+        .header {
+            width: 55%;
+            background: #17daec;
             font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-            margin:0px auto;
-            font-size:25px;
-            text-align:center;
+            margin: 0px auto;
+            font-size: 25px;
+            text-align: center;
         }
     </style>
 </asp:Content>

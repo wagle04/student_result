@@ -28,7 +28,10 @@ namespace Student_Result
             dt = ba.loginuser(da);
             if (dt.Rows.Count > 0)
             {
+                Session["username"] = username.Text;
+                Session["password"] = password.Text;
                 Response.Redirect("ViewResult.aspx");
+               
             }
             else
             {
