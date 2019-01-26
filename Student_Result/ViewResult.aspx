@@ -1,7 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ViewResult.aspx.cs" Inherits="Student_Result.ViewResult" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
+    <style type="text/css">
+        .auto-style1 {
+            width: 161px;
+        }
+    </style>
+    </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div>
         Hello,
@@ -10,17 +15,32 @@
     </div>
     
         <div>
-            <asp:DataGrid ID="gridresult" runat="server" AutoGenerateColumns="false">
-                <Columns>
-                    <asp:BoundColumn DataField="subject" HeaderText="Subject"></asp:BoundColumn>
-                    <asp:BoundColumn DataField="fullmarks" HeaderText="Full Marks"></asp:BoundColumn>
-                    <asp:BoundColumn DataField="passmarks" HeaderText="Pass Marks"></asp:BoundColumn>
-                    <asp:BoundColumn DataField="obtmarks" HeaderText="Obtained Marks"></asp:BoundColumn>
-                    <asp:BoundColumn DataField="pracmarks" HeaderText="Practical Marks"></asp:BoundColumn>
-                    <asp:BoundColumn DataField="totalmarks" HeaderText="Total Marks"></asp:BoundColumn>
-                    <asp:BoundColumn DataField="percentage" HeaderText="Percentage"></asp:BoundColumn>
-                </Columns>
-            </asp:DataGrid>
+           
+            <asp:GridView ID="gridresult1" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
+                <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                <EditRowStyle BackColor="#999999" />
+                <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+                <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+                <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+                <SortedAscendingCellStyle BackColor="#E9E7E2" />
+                <SortedAscendingHeaderStyle BackColor="#506C8C" />
+                <SortedDescendingCellStyle BackColor="#FFFDF8" />
+                <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+            </asp:GridView>
+
+            <asp:Table runat="server">
+
+            </asp:Table>
+
+
+
+            <br />
+           
+
+
+
         </div>
   
 

@@ -17,6 +17,7 @@ namespace Student_Result
         studentlogind da = new studentlogind();
         DataTable dt = new DataTable();
         DataTable dt1 = new DataTable();
+        DataTable dt2 = new DataTable();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -30,10 +31,20 @@ namespace Student_Result
             lblname.Text = fullname;
 
             dt = ba.searchresult(da);
-            gridresult.DataSource = dt;
-            gridresult.DataBind();
 
- 
+            for (int i = 0; i <= 1; i++)
+            {
+                dt.Columns.RemoveAt(6);
+            }
+
+            dt.AcceptChanges();
+            gridresult1.DataSource = dt;
+            gridresult1.DataBind();
+
+            dt2.NewRow();
+
+            
+
         }
     }
 }
