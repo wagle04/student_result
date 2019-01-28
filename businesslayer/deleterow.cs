@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using System.Data;
 using System.Data.SqlClient;
 using businesslayer;
@@ -11,20 +10,17 @@ using dataaccess;
 
 namespace businesslayer
 {
-    public class studentloginb
+    public class deleterow
     {
         SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-4NU18DVA;Initial Catalog=student_result;User ID=sa;Password=sql");
-
-        public DataTable loginuser(studentlogind da)
+        public void delete(string subject, string username)
         {
-            DataTable dt = new DataTable();
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "delete from result where subject='" + subject + "' and username='"+username+"'";
+            cmd.Connection = con;
             con.Open();
-            SqlCommand com = new SqlCommand("select * from students where username='" + da.username + "' and password='" + da.password + "'", con);
-            SqlDataAdapter sda = new SqlDataAdapter(com);
-            sda.Fill(dt);
-            return dt;
-
+            cmd.ExecuteNonQuery();
+            con.Close();
         }
     }
-
 }

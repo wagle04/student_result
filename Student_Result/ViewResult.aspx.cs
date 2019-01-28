@@ -15,6 +15,7 @@ namespace Student_Result
     {
         studentloginb ba = new studentloginb();
         studentlogind da = new studentlogind();
+        searchresult sr = new searchresult();
         DataTable dt = new DataTable();
         DataTable dt1 = new DataTable();
 
@@ -29,7 +30,7 @@ namespace Student_Result
             string fullname = dt1.Rows[0].ItemArray[2].ToString();
             lblname.Text = fullname;
 
-            dt = ba.searchresult(da);
+            dt = sr.result(da);
             DataRow dr = dt.NewRow();
             dr[0] = "Total";
             for (int j = 1; j < dt.Columns.Count; j++)
@@ -69,7 +70,14 @@ namespace Student_Result
             {
                 pracmarks[i] = Convert.ToInt32(dt.Rows[i].ItemArray[4]);
             }
-            string result = passorfail(obtmarks, pracmarks);
+
+            int[] fullmarks = new int[dt.Rows.Count - 1];
+            for (int i = 0; i < dt.Rows.Count - 1; i++)
+            {
+                fullmarks[i] = Convert.ToInt32(dt.Rows[i].ItemArray[1]);
+            }
+
+            string result = passorfail(obtmarks, pracmarks,fullmarks);
             lblresult.Text = result;
 
         }
@@ -97,23 +105,26 @@ namespace Student_Result
         }
 
 
-        protected string passorfail(int[] obtmarks, int[] pracmarks)
+        protected string passorfail(int[] obtmarks, int[] pracmarks,int[] fullmarks )
         {
             bool a = true;
-            foreach (int x in obtmarks)
+            for(int i = 0; i < obtmarks.Length; i++)
             {
-                if (x < 32)
+                int m = Convert.ToInt32(0.32 * fullmarks[i]);
+                if (obtmarks[i] < m)
                 {
                     a = false;
                 }
             }
-            foreach (int x in pracmarks)
+            for (int i = 0; i < pracmarks.Length; i++)
             {
-                if (x < 8)
+                int m = Convert.ToInt32(0.08 * fullmarks[i]);
+                if (pracmarks[i] < m)
                 {
                     a = false;
                 }
             }
+
             if (a)
             {
                 return "Passed";
