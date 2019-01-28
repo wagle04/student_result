@@ -17,7 +17,6 @@ namespace Student_Result
         studentlogind da = new studentlogind();
         DataTable dt = new DataTable();
         DataTable dt1 = new DataTable();
-        DataTable dt2 = new DataTable();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -31,21 +30,98 @@ namespace Student_Result
             lblname.Text = fullname;
 
             dt = ba.searchresult(da);
-
-            for (int i = 0; i <= 1; i++)
+            DataRow dr = dt.NewRow();
+            dr[0] = "Total";
+            for (int j = 1; j < dt.Columns.Count; j++)
             {
-                dt.Columns.RemoveAt(6);
+                dr[j] = 0;
+            }
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                for (int j = 1; j <= 5; j++)
+                {
+                    dr[j] = Convert.ToInt32(dr[j]) + Convert.ToInt32(dt.Rows[i].ItemArray[j]);
+                }
+            }
+            dt.Rows.Add(dr);
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+
+
+            float total = Convert.ToInt32(dt.Rows[dt.Rows.Count - 1].ItemArray[5]);
+            float totalmarks = Convert.ToInt32(dt.Rows[dt.Rows.Count - 1].ItemArray[1]);
+            float percent = (total * 100 / totalmarks);
+
+            lblpercent.Text = percent.ToString();
+
+            string division = getDivision(percent);
+            lbldivision.Text = division;
+
+
+
+            int[] obtmarks = new int[dt.Rows.Count - 1];
+            for (int i = 0; i < dt.Rows.Count - 1; i++)
+            {
+                obtmarks[i] = Convert.ToInt32(dt.Rows[i].ItemArray[3]);
+            }
+            int[] pracmarks = new int[dt.Rows.Count - 1];
+            for (int i = 0; i < dt.Rows.Count - 1; i++)
+            {
+                pracmarks[i] = Convert.ToInt32(dt.Rows[i].ItemArray[4]);
+            }
+            string result = passorfail(obtmarks, pracmarks);
+            lblresult.Text = result;
+
+        }
+
+
+        protected string getDivision(float percent)
+        {
+            if (percent >= 80)
+            {
+                return "Distinction";
             }
 
-            dt.AcceptChanges();
-            gridresult1.DataSource = dt;
-            gridresult1.DataBind();
+            else if (percent >= 65 && percent < 80)
+            {
+                return "1st Division";
+            }
+            else if (percent >= 50 && percent < 65)
+            {
+                return "2nd Division";
+            }
+            else
+            {
+                return "   ";
+            }
+        }
 
-            //dt2.NewRow();
-            // GridView1.DataSource = dt;
-            // GridView1.DataBind();
 
-
+        protected string passorfail(int[] obtmarks, int[] pracmarks)
+        {
+            bool a = true;
+            foreach (int x in obtmarks)
+            {
+                if (x < 32)
+                {
+                    a = false;
+                }
+            }
+            foreach (int x in pracmarks)
+            {
+                if (x < 8)
+                {
+                    a = false;
+                }
+            }
+            if (a)
+            {
+                return "Passed";
+            }
+            else
+            {
+                return "Failed";
+            }
 
         }
     }

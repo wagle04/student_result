@@ -31,7 +31,7 @@ namespace Student_Result
                 Session["username"] = username.Text;
                 Session["password"] = password.Text;
                 Response.Redirect("ViewResult.aspx");
-               
+
             }
             else
             {
