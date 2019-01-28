@@ -41,9 +41,11 @@ namespace Student_Result
             gridresult1.DataSource = dt;
             gridresult1.DataBind();
 
-            dt2.NewRow();
+            //dt2.NewRow();
+            // GridView1.DataSource = dt;
+            // GridView1.DataBind();
 
-            
+
 
         }
     }
