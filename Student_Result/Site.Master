@@ -79,9 +79,9 @@
 
             <ul>
 
-                <li><a class="others" runat="server" href="https:\www.google.com">College website</a></li>
+                <li><a class="others" runat="server" href="https:\www.google.com" >College website</a></li>
                 <li><a class="others" runat="server" href="~/Contact">Contact</a></li>
-                <li><a class="others" runat="server" href="~/Report">Report Issues</a></li>
+                <li><a class="others" runat="server" href="https:\www.google.com" >Upcoming Exams</a></li>
             </ul>
         </div>
         <hr />
