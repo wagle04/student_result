@@ -23,9 +23,9 @@
             </tr>
             <tr>
                 <th>
-                    <asp:Button runat="server" name="btnforgotpw" Text="Forgot Password?" Style="align-content: center; font-size: 20px; background: black; color: white;" OnClick="btnforgot_Click" /></th>
+                    <asp:Button runat="server"  Text="Forgot Password?" Style="align-content: center; font-size: 20px; background: black; color: white;" OnClick="btnforgot_Click" /></th>
                 <th>
-                    <asp:Button runat="server" name="btnLogin" Text="Login" Style="align-content: center; font-size: 20px; background: black; color: white;" OnClick="btnLogin_Click" /></th>
+                    <asp:Button runat="server" Text="Login" Style="align-content: center; font-size: 20px; background: black; color: white;" OnClick="btnLogin_Click" /></th>
 
             </tr>
 
@@ -34,7 +34,7 @@
                 <td colspan="2" style="background: green; font-size: 20px; text-align: center;">Not a student? To login as teacher click below!!</td>
                 <tr>
                     <td colspan="2">
-                        <asp:Button runat="server" name="btnTeacher" Text="Login as Teacher" OnClick="btnTeacher_Click" Style="align-content: center; font-size: 20px; background: black; color: white; width: 100%;" /></td>
+                        <asp:Button runat="server" Text="Login as Teacher" OnClick="btnTeacher_Click" Style="align-content: center; font-size: 20px; background: black; color: white; width: 100%;" /></td>
                 </tr>
 
         </table>
