@@ -12,13 +12,11 @@ namespace Student_Result
 {
     public partial class AddResult : System.Web.UI.Page
     {
-        studentloginb bas = new studentloginb();
-        studentlogind das = new studentlogind();
-        searchresult srs = new searchresult();
-
-        teacherloginb ba = new teacherloginb();
-        teacherlogind da = new teacherlogind();
-        addresult ar = new addresult();
+        dlstudentlogin das = new dlstudentlogin();
+        blsearchresult srs = new blsearchresult();
+        blteacherlogin ba = new blteacherlogin();
+        dlteacherlogin da = new dlteacherlogin();
+        bladdresult ar = new bladdresult();
         DataTable dt = new DataTable();
         DataTable dt1 = new DataTable();
 
@@ -33,6 +31,7 @@ namespace Student_Result
             string fullname = dt1.Rows[0].ItemArray[3].ToString();
             lblname.Text = fullname;
             addpanel.Visible = false;
+
             das.username = txtroll.Text;
             dt = srs.result(das);
 
@@ -80,19 +79,18 @@ namespace Student_Result
 
         protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            deleterow dr = new deleterow();
+            bldeleterow dr = new bldeleterow();
             dr.delete(GridView1.DataKeys[e.RowIndex].Values["subject"].ToString(), txtroll.Text.ToString());
             showdt();
-
-
         }
+
         protected void showdt()
         {
-
+            string username = Session["username"].ToString();
             addpanel.Visible = true;
             txtroll.Text = txtroll.Text;
             lblrn.Text = txtroll.Text;
-
+            
             das.username = txtroll.Text;
             dt = srs.result(das);
             GridView1.DataSource = dt;

@@ -12,8 +12,8 @@ namespace Student_Result
 {
     public partial class Default : System.Web.UI.Page
     {
-        studentloginb ba = new studentloginb();
-        studentlogind da = new studentlogind();
+        blstudentlogin ba = new blstudentlogin();
+        dlstudentlogin da = new dlstudentlogin();
         DataTable dt = new DataTable();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -33,6 +33,8 @@ namespace Student_Result
                 Response.Redirect("ViewResult.aspx");
 
             }
+
+
             else
             {
                 Response.Write("<script>alert('invalid username or password')</script>");

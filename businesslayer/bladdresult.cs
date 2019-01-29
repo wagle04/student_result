@@ -10,7 +10,7 @@ using dataaccess;
 
 namespace businesslayer
 {
-    public class addresult
+    public class bladdresult
     {
         SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-4NU18DVA;Initial Catalog=student_result;User ID=sa;Password=sql");
         public void add(string rollno, string subject,int fullmarks,int passmarks,int obtmarks,int pracmarks)

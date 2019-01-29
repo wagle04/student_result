@@ -10,7 +10,7 @@ using dataaccess;
 
 namespace businesslayer
 {
-    public class deleterow
+    public class bldeleterow
     {
         SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-4NU18DVA;Initial Catalog=student_result;User ID=sa;Password=sql");
         public void delete(string subject, string username)

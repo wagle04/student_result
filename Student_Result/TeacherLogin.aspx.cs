@@ -12,8 +12,8 @@ namespace Student_Result
 {
     public partial class _Default : Page
     {
-        teacherloginb ba = new teacherloginb();
-        teacherlogind da = new teacherlogind();
+        blteacherlogin ba = new blteacherlogin();
+        dlteacherlogin da = new dlteacherlogin();
         DataTable dt = new DataTable();
 
         protected void Page_Load(object sender, EventArgs e)

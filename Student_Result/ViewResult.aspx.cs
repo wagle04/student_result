@@ -13,9 +13,10 @@ namespace Student_Result
 {
     public partial class ViewResult : System.Web.UI.Page
     {
-        studentloginb ba = new studentloginb();
-        studentlogind da = new studentlogind();
-        searchresult sr = new searchresult();
+        blstudentlogin ba = new blstudentlogin();
+        dlstudentlogin da = new dlstudentlogin();
+        blsearchresult srb = new blsearchresult();
+        dlsearchresult srd = new dlsearchresult();
         DataTable dt = new DataTable();
         DataTable dt1 = new DataTable();
 
@@ -30,110 +31,18 @@ namespace Student_Result
             string fullname = dt1.Rows[0].ItemArray[2].ToString();
             lblname.Text = fullname;
 
-            dt = sr.result(da);
-            DataRow dr = dt.NewRow();
-            dr[0] = "Total";
-            for (int j = 1; j < dt.Columns.Count; j++)
-            {
-                dr[j] = 0;
-            }
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                for (int j = 1; j <= 5; j++)
-                {
-                    dr[j] = Convert.ToInt32(dr[j]) + Convert.ToInt32(dt.Rows[i].ItemArray[j]);
-                }
-            }
-            dt.Rows.Add(dr);
+            dt = srb.result(srd,username);
             GridView1.DataSource = dt;
             GridView1.DataBind();
 
 
-            float total = Convert.ToInt32(dt.Rows[dt.Rows.Count - 1].ItemArray[5]);
-            float totalmarks = Convert.ToInt32(dt.Rows[dt.Rows.Count - 1].ItemArray[1]);
-            float percent = (total * 100 / totalmarks);
-
-            lblpercent.Text = percent.ToString();
-
-            string division = getDivision(percent);
-            lbldivision.Text = division;
-
-
-
-            int[] obtmarks = new int[dt.Rows.Count - 1];
-            for (int i = 0; i < dt.Rows.Count - 1; i++)
-            {
-                obtmarks[i] = Convert.ToInt32(dt.Rows[i].ItemArray[3]);
-            }
-            int[] pracmarks = new int[dt.Rows.Count - 1];
-            for (int i = 0; i < dt.Rows.Count - 1; i++)
-            {
-                pracmarks[i] = Convert.ToInt32(dt.Rows[i].ItemArray[4]);
-            }
-
-            int[] fullmarks = new int[dt.Rows.Count - 1];
-            for (int i = 0; i < dt.Rows.Count - 1; i++)
-            {
-                fullmarks[i] = Convert.ToInt32(dt.Rows[i].ItemArray[1]);
-            }
-
-            string result = passorfail(obtmarks, pracmarks,fullmarks);
-            lblresult.Text = result;
+            lblpercent.Text = srb.getpdr(dt)[0];
+            lbldivision.Text = srb.getpdr(dt)[1];
+            lblresult.Text = srb.getpdr(dt)[2];
 
         }
 
 
-        protected string getDivision(float percent)
-        {
-            if (percent >= 80)
-            {
-                return "Distinction";
-            }
-
-            else if (percent >= 65 && percent < 80)
-            {
-                return "1st Division";
-            }
-            else if (percent >= 50 && percent < 65)
-            {
-                return "2nd Division";
-            }
-            else
-            {
-                return "   ";
-            }
-        }
-
-
-        protected string passorfail(int[] obtmarks, int[] pracmarks,int[] fullmarks )
-        {
-            bool a = true;
-            for(int i = 0; i < obtmarks.Length; i++)
-            {
-                int m = Convert.ToInt32(0.32 * fullmarks[i]);
-                if (obtmarks[i] < m)
-                {
-                    a = false;
-                }
-            }
-            for (int i = 0; i < pracmarks.Length; i++)
-            {
-                int m = Convert.ToInt32(0.08 * fullmarks[i]);
-                if (pracmarks[i] < m)
-                {
-                    a = false;
-                }
-            }
-
-            if (a)
-            {
-                return "Passed";
-            }
-            else
-            {
-                return "Failed";
-            }
-
-        }
+        
     }
 }

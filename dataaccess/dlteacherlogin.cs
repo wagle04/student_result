@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using dataaccess;
-using businesslayer;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace businesslayer
+namespace dataaccess
 {
-   public class teacherloginb
+   public class dlteacherlogin
     {
+   
+        public string username { get; set; }
+        public string password { get; set; }
+
         SqlConnection con = new SqlConnection(@"Data Source=LAPTOP-4NU18DVA;Initial Catalog=student_result;User ID=sa;Password=sql");
 
-        public DataTable loginuser(teacherlogind da)
+        public DataTable loginuser(dlteacherlogin da)
         {
             DataTable dt = new DataTable();
             con.Open();
@@ -24,4 +26,5 @@ namespace businesslayer
             return dt;
         }
     }
+    
 }
